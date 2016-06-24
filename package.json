@@ -25,6 +25,7 @@
         "editor", "messaging", "iot", "ibm", "flow"
     ],
     "dependencies": {
+        "cfenv": "~1.0.0",
         "basic-auth": "1.0.4",
         "bcryptjs": "2.3.0",
         "body-parser": "1.15.1",
