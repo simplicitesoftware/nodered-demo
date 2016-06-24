@@ -5,8 +5,9 @@
 NodeRED web frontend demo
 =========================
 
-This project is a web front-end demo written in NodeRED using the Simplicit&eacute;&reg; Node.js API
-and Simplicit&eacute;&reg; NodeRED nodes to access to a Simplicit&eacute;&reg; back-end instance.
+This project is a web front-end demo written in [NodeRED](http://nodered.org/) using the [Simplicit&eacute;&reg; Node.js API](https://github.com/simplicitesoftware/nodejs-api)
+and [Simplicit&eacute;&reg; NodeRED nodes](https://github.com/simplicitesoftware/nodered-nodes)
+to access to a Simplicit&eacute;&reg; back-end instance.
 
 Back-end prerequisites
 ----------------------
