@@ -7,4 +7,4 @@ applications:
   host: simplicite-nodered
   # PIVOTAL: domain: cfapps.io
   # BLUEMIX: domain: mybluemix.net
-  domain: mydomain.co
+  domain: mydomain.com
