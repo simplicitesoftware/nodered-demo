@@ -3,7 +3,8 @@ applications:
   memory: 512M
   disk_quota: 1024M
   instances: 1
+  name: simplicite-nodered
   host: simplicite-nodered
   # PIVOTAL: domain: cfapps.io
   # BLUEMIX: domain: mybluemix.net
-  domain: mydomain.com  name: simplicite-nodered
+  domain: mydomain.co
