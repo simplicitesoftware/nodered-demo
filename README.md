@@ -15,7 +15,7 @@ Back-end prerequisites
 To use this front-end demo you need to havea running Simplicit&eacute;&reg; back-end instance. 
 
 On this instance you need to load the demo application configuration by creating and uploading the `Demo` module `http://www.simplicitesoftware.com/resources/modules/demo-app-x.y.xml`
-and its sample data `http://www.simplicitesoftware.com/resources/modules/demo-data-x.y-xml` (where `x.y` is your intsance's version).
+and its sample data `http://www.simplicitesoftware.com/resources/modules/demo-data-x.y-xml` (where `x.y` is your instance's version).
 
 Run locally
 -----------
