@@ -5,19 +5,29 @@
 NodeRED web frontend demo
 =========================
 
-This project is a web frontend demo written in NodeRED using the Simplicit&eacute;&reg; Node.js API
-and Simplicit&eacute;&reg; NodeRED nodes to access to a Simplicit&eacute;&reg;
-backend instance.
+This project is a web front-end demo written in NodeRED using the Simplicit&eacute;&reg; Node.js API
+and Simplicit&eacute;&reg; NodeRED nodes to access to a Simplicit&eacute;&reg; back-end instance.
 
-Deploy
-------
+Back-end prerequisites
+----------------------
 
-Load the demo configuration into a Simplicit&eacute;&reg; instance
-by uploading :
+To use this front-end demo you need to havea running Simplicit&eacute;&reg; back-end instance. 
 
-1. The platform demo app `http://www.simplicitesoftware.com/resources/modules/demo-app.zip`
-and data `http://www.simplicitesoftware.com/resources/modules/demo-data.zip`
-2. The messaging demo `http://www.simplicitesoftware.com/resources/modules/bluemix-demo.zip`
+On this instance you need to load the demo application configuration by creating and uploading the `Demo` module `http://www.simplicitesoftware.com/resources/modules/demo-app-x.y.xml`
+and its sample data `http://www.simplicitesoftware.com/resources/modules/demo-data-x.y-xml` (where `x.y` is your intsance's version).
+
+Run locally
+-----------
+
+```
+npm install --production
+node red.js
+```
+
+Run on CloudFoundry
+-------------------
+
+### Deploy
 
 Adjust the `manifest.yml` to your needs and deploy the app:
 
@@ -28,10 +38,7 @@ cf push <app name>
 Once deployed, load the flows located in the `flows` folder and adjust the nodes
 configuration to point to the Simplcit&eacute;&reg; instance.
 
-Enjoy !
-
-Undeploy
---------
+### Undeploy
 
 Undeploy the app:
 
