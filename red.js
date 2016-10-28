@@ -157,7 +157,7 @@ if (settings.httpNodeRoot !== false) {
     settings.httpNodeAuth = settings.httpNodeAuth || settings.httpAuth;
 }
 
-settings.uiPort = parsedArgs.port||settings.uiPort||1880;
+settings.uiPort = parsedArgs.port||settings.uiPort||3000;
 settings.uiHost = settings.uiHost||"0.0.0.0";
 
 if (flowFile) {
