@@ -1,0 +1,475 @@
+[
+    {
+        "id": "43527ffc.f24cd",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "15a04d1.04ea5b3",
+        "type": "simplicite-config",
+        "z": "43527ffc.f24cd",
+        "name": "default",
+        "username": "website",
+        "password": "simplicite",
+        "host": "demo.dev.simplicite.io",
+        "port": "443",
+        "scheme": "https",
+        "root": "",
+        "debug": "false"
+    },
+    {
+        "id": "99d36acf.225b78",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 590,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "22a5e575.36e82a",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/appinfo",
+        "method": "get",
+        "x": 110,
+        "y": 140,
+        "wires": [
+            [
+                "342f7051.5321f"
+            ]
+        ]
+    },
+    {
+        "id": "f17ffc94.20dd3",
+        "type": "template",
+        "z": "43527ffc.f24cd",
+        "name": "appinfo",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "mustache",
+        "template": "<p>\nApplication name: <b>{{payload.name}}</b>\n<br/>Application version: <b>{{payload.version}}</b>\n<br/>Platform version: <b>{{payload.platformversion}}</b>\n<br/>Platform encoding: <b>{{payload.encoding}}</b>\n<br/>Server: <b>{{payload.server}}</b>\n</p>",
+        "x": 440,
+        "y": 140,
+        "wires": [
+            [
+                "99d36acf.225b78"
+            ]
+        ]
+    },
+    {
+        "id": "ed132a7d.a5a168",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 430,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "342f7051.5321f",
+        "type": "simplicite-session",
+        "z": "43527ffc.f24cd",
+        "name": "appinfo",
+        "server": "15a04d1.04ea5b3",
+        "action": "appinfo",
+        "x": 280,
+        "y": 140,
+        "wires": [
+            [
+                "f17ffc94.20dd3",
+                "ed132a7d.a5a168"
+            ]
+        ]
+    },
+    {
+        "id": "3fd2c5ce.9e141a",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 590,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "c26a810.aa0a18",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/sysinfo",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 240,
+        "wires": [
+            [
+                "9620a589.06f948"
+            ]
+        ]
+    },
+    {
+        "id": "4da344fd.60be3c",
+        "type": "template",
+        "z": "43527ffc.f24cd",
+        "name": "sysinfo",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "mustache",
+        "template": "<p>\nObject cache: <b>{{payload.cacheobject}} / {{payload.cacheobjectmax}}</b>\n<br/>Grant cache: <b>{{payload.cachegrant}} / {{payload.cachegrantmax}}</b>\n<br/>Heap: <b>Used {{payload.heapsize}}Kb, Free {{payload.heapfreesize}}Kb, Max {{payload.heapsize}}Kb</b>\n<br/>Disk: <b>DBDoc {{payload.dirdbdoc}}, Cache {{payload.dircache}}Kb, Recycle bin {{payload.dirrecyclebin}}Kb, Free {{payload.diskfree}}Kb</b>\n</p>",
+        "x": 440,
+        "y": 240,
+        "wires": [
+            [
+                "3fd2c5ce.9e141a"
+            ]
+        ]
+    },
+    {
+        "id": "1fcd44bd.7143eb",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 430,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "9620a589.06f948",
+        "type": "simplicite-session",
+        "z": "43527ffc.f24cd",
+        "name": "sysinfo",
+        "server": "15a04d1.04ea5b3",
+        "action": "sysinfo",
+        "x": 280,
+        "y": 240,
+        "wires": [
+            [
+                "4da344fd.60be3c",
+                "1fcd44bd.7143eb"
+            ]
+        ]
+    },
+    {
+        "id": "fb344ce5.b89db",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/grant",
+        "method": "get",
+        "x": 100,
+        "y": 40,
+        "wires": [
+            [
+                "bcad33e.bafc3d"
+            ]
+        ]
+    },
+    {
+        "id": "835f05dd.1454f8",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 670,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "b95fed82.afd16",
+        "type": "template",
+        "z": "43527ffc.f24cd",
+        "name": "grant",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "mustache",
+        "template": "Hello <b>{{payload.firstname}} {{payload.lastname}}</b> (<i>{{payload.login}}</i>)!\n{{#payload.picture}}\n<br/><img src=\"data:{{mime}};base64,{{content}}\"/>\n{{/payload.picture}}\n\n",
+        "x": 530,
+        "y": 40,
+        "wires": [
+            [
+                "835f05dd.1454f8"
+            ]
+        ]
+    },
+    {
+        "id": "15aa9660.3f1bba",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 530,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "80836c59.6c008",
+        "type": "simplicite-session",
+        "z": "43527ffc.f24cd",
+        "name": "grant",
+        "server": "15a04d1.04ea5b3",
+        "action": "grant",
+        "x": 390,
+        "y": 40,
+        "wires": [
+            [
+                "b95fed82.afd16",
+                "15aa9660.3f1bba"
+            ]
+        ]
+    },
+    {
+        "id": "bcad33e.bafc3d",
+        "type": "function",
+        "z": "43527ffc.f24cd",
+        "name": "grant",
+        "func": "msg.payload = { \n\tparameters: {\n\t\tinlinePicture: true\n\t}\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 250,
+        "y": 40,
+        "wires": [
+            [
+                "80836c59.6c008"
+            ]
+        ]
+    },
+    {
+        "id": "87e0f219.ca30c",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/products",
+        "method": "get",
+        "x": 120,
+        "y": 420,
+        "wires": [
+            [
+                "84045610.d85da8"
+            ]
+        ]
+    },
+    {
+        "id": "84045610.d85da8",
+        "type": "function",
+        "z": "43527ffc.f24cd",
+        "name": "params",
+        "func": "msg.payload = {\n\taction: \"search\",\n\tparameters: {\n\t\tinlineThumbs: true,\n\t},\n\tfilters: {\n\t\t/*demoPrdAvailable: true*/\n\t}\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 300,
+        "y": 420,
+        "wires": [
+            [
+                "2944a056.16c67"
+            ]
+        ]
+    },
+    {
+        "id": "2944a056.16c67",
+        "type": "simplicite-object",
+        "z": "43527ffc.f24cd",
+        "name": "products",
+        "server": "15a04d1.04ea5b3",
+        "objectname": "DemoProduct",
+        "action": "",
+        "x": 460,
+        "y": 420,
+        "wires": [
+            [
+                "7bb3bbae.6a82c4",
+                "2bedd178.d36b0e"
+            ]
+        ]
+    },
+    {
+        "id": "7bb3bbae.6a82c4",
+        "type": "template",
+        "z": "43527ffc.f24cd",
+        "name": "products",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "mustache",
+        "template": "<div class=\"row\">\n\t<div class=\"col-md-12\">\n\t\t<h3>Products <button class=\"btn btn-xs btn-default pull-right\" onclick=\"products();\"><span class=\"glyphicon glyphicon-refresh\"></span> Refresh</button></h3>\n\t</div>\n{{#payload.list}}\n\t<div class=\"col-md-6\">\n\t\t<div class=\"panel panel-info\">\n\t\t\t<div class=\"panel-heading\"><h4><span class=\"glyphicon glyphicon-shopping-cart\"></span> {{demoPrdSupId__demoSupCode}} / {{demoPrdName}}</h4></div>\n\t\t\t<div class=\"panel-body\">\n\t\t\t\t{{#demoPrdPicture}}\n\t\t\t\t<img src=\"data:{{mime}};base64,{{thumbnail}}\" style=\"margin: 5px; float: left;\"/>\n\t\t\t\t{{/demoPrdPicture}}\n\t\t\t\t<p>{{{demoPrdDescription}}}</p>\n\t\t\t\t<div class=\"badge badge-lg pull-right\">$ {{demoPrdUnitPrice}}<!-- &euro;--></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n{{/payload.list}}\n</div>",
+        "x": 660,
+        "y": 420,
+        "wires": [
+            [
+                "7a407c51.f45d14"
+            ]
+        ]
+    },
+    {
+        "id": "7a407c51.f45d14",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 810,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "f15c9be1.6d5d58",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/news",
+        "method": "get",
+        "x": 100,
+        "y": 520,
+        "wires": [
+            [
+                "520fe381.ffd7ec"
+            ]
+        ]
+    },
+    {
+        "id": "69de63c6.1ba51c",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 690,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "fb793ac7.fba438",
+        "type": "template",
+        "z": "43527ffc.f24cd",
+        "name": "news",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "mustache",
+        "template": "<div class=\"row\">\n\t<div class=\"col-md-12\">\n\t\t<h3>News <button class=\"btn btn-xs btn-default pull-right\" onclick=\"news();\"><span class=\"glyphicon glyphicon-refresh\"></span> Refresh</button></h3>\n\t</div>\n{{#payload}}\n\t<div class=\"col-md-12\">\n\t\t<div class=\"panel panel-warning\">\n\t\t\t<div class=\"panel-heading\"><span class=\"glyphicon glyphicon-bullhorn\"></span> {{title}}</div>\n\t\t\t<div class=\"panel-body\">\n\t\t\t\t{{#image}}\n\t\t\t\t<img src=\"data:{{mime}};base64,{{content}}\" style=\"margin: 5px; float: left;\"/>\n\t\t\t\t{{/image}}\n\t\t\t\t<p>{{content}}</p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n{{/payload}}\n</div>\n",
+        "x": 550,
+        "y": 520,
+        "wires": [
+            [
+                "69de63c6.1ba51c"
+            ]
+        ]
+    },
+    {
+        "id": "520fe381.ffd7ec",
+        "type": "function",
+        "z": "43527ffc.f24cd",
+        "name": "params",
+        "func": "msg.payload = {\n\tparameters: {\n\t\tinlineImages: true\n\t}\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 260,
+        "y": 520,
+        "wires": [
+            [
+                "e296f697.de5ff8"
+            ]
+        ]
+    },
+    {
+        "id": "e296f697.de5ff8",
+        "type": "simplicite-session",
+        "z": "43527ffc.f24cd",
+        "name": "news",
+        "server": "15a04d1.04ea5b3",
+        "action": "news",
+        "x": 410,
+        "y": 520,
+        "wires": [
+            [
+                "fb793ac7.fba438",
+                "7284c384.c898fc"
+            ]
+        ]
+    },
+    {
+        "id": "7284c384.c898fc",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 550,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "2bedd178.d36b0e",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 650,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "975d359c.d0ba68",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/demo",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "fdb8c675.d169f8"
+            ]
+        ]
+    },
+    {
+        "id": "bdf81e02.d351",
+        "type": "template",
+        "z": "43527ffc.f24cd",
+        "name": "demo",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "mustache",
+        "template": "<html>\n<head>\n<title>Simplicit&eacute; NodeRED demo</title>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n<link rel=\"shortcut icon\" href=\"{{{payload.resourcesURL}}}/logos/favicon.ico\"/>\n<link href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\" rel=\"stylesheet\"/>\n</head>\n<body>\n<div class=\"container\">\n\t<div class=\"row\">\n\t\t<div class=\"col-md-12 well\" style=\"text-align: center; margin-top: 10px;\">\n\t\t\t<img src=\"{{{payload.resourcesURL}}}/logos/logo500.png\"/>\n\t\t</div>\n\t</div>\n\t<div class=\"row\">\n\t\t<div id=\"products\" class=\"col-md-9\"></div>\n\t\t<div id=\"news\" class=\"col-md-3\"></div>\n\t</div>\n\t<div class=\"row\">\n\t\t<div class=\"col-md-12\" style=\"text-align: center;\"><hr/>&copy; Simplicit&eacute; Software</div>\n\t</div>\n</div>\n<script src=\"https://code.jquery.com/jquery-2.2.4.min.js\"></script>\n<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>\n<script type=\"text/javascript\">\nfunction products() { $(\"#products\").text(\"Loading...\").load(\"/products\"); }\nfunction news() { $(\"#news\").text(\"Loading...\").load(\"/news\"); }\n$(document).ready(function() { products(); news(); });\n</script>\n</body>\n</html>\n",
+        "x": 430,
+        "y": 340,
+        "wires": [
+            [
+                "7aa72aa0.898154"
+            ]
+        ]
+    },
+    {
+        "id": "7aa72aa0.898154",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 570,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "fdb8c675.d169f8",
+        "type": "function",
+        "z": "43527ffc.f24cd",
+        "name": "params",
+        "func": "msg.payload = {\n    resourcesURL: \"https://docs.simplicite.io\"\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 280,
+        "y": 340,
+        "wires": [
+            [
+                "bdf81e02.d351"
+            ]
+        ]
+    }
+]

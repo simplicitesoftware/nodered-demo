@@ -4,47 +4,23 @@
 NodeRED web frontend demo
 =========================
 
-This project is a web front-end demo written in [NodeRED](http://nodered.org/) using the [Simplicit&eacute;&reg; Node.js API](https://github.com/simplicitesoftware/nodejs-api)
+This project is a web front-end demo written in [NodeRED](http://nodered.org/)
+using the [Simplicit&eacute;&reg; Node.js API](https://github.com/simplicitesoftware/nodejs-api)
 and [Simplicit&eacute;&reg; NodeRED nodes](https://github.com/simplicitesoftware/nodered-nodes)
 to access to a Simplicit&eacute;&reg; back-end instance.
 
-Back-end prerequisites
-----------------------
+Prerequisites
+-------------
 
-To use this front-end demo you need to havea running Simplicit&eacute;&reg; back-end instance. 
+To use this front-end demo you need to havea running Simplicit&eacute;&reg; back-end instance
+and a NodeRED front-end including the Simplicit&eacute;&reg; nodes.
 
-On this instance you need to load the demo application configuration by creating and uploading the `Demo` module `http://www.simplicitesoftware.com/resources/modules/demo-app-x.y.xml`
-and its sample data `http://www.simplicitesoftware.com/resources/modules/demo-data-x.y-xml` (where `x.y` is your instance's version).
+On the back-end you need to import the demo application configuration by loading
+the `Demo` module `http://www.simplicitesoftware.com/resources/modules/demo-app-x.y.xml`
+and its sample data `http://www.simplicitesoftware.com/resources/modules/demo-data-x.y-xml`
+(where `x.y` is your instance's version, e.g. 4.0).
 
-Run locally
------------
-
-```
-npm install --production
-node red.js
-```
-
-Run on CloudFoundry
--------------------
-
-### Deploy
-
-Adjust the `manifest.yml` to your needs and deploy the app:
-
-```
-cf push <app name>
-```
-
-Once deployed, load the flows located in the `flows` folder and adjust the nodes
-configuration to point to the Simplcit&eacute;&reg; instance.
-
-### Undeploy
-
-Undeploy the app:
-
-```
-cf delete <app name>
-```
+On the front-end you need to import the Demo flows provided in the `demo.json` file.
 
 License
 =======
