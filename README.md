@@ -12,15 +12,17 @@ to access to a Simplicit&eacute;&reg; back-end instance.
 Prerequisites
 -------------
 
-To use this front-end demo you need to havea running Simplicit&eacute;&reg; back-end instance
-and a NodeRED front-end including the Simplicit&eacute;&reg; nodes.
+To use this full-stack demo you need to havei:
 
-On the back-end you need to import the demo application configuration by loading
+- a Simplicit&eacute;&reg; back-end instance
+- a NodeRED front-end configured with the Simplicit&eacute;&reg; nodes
+
+On the **back-end** you need to import the demo application configuration by loading
 the `Demo` module `http://www.simplicitesoftware.com/resources/modules/demo-app-x.y.xml`
 and its sample data `http://www.simplicitesoftware.com/resources/modules/demo-data-x.y-xml`
-(where `x.y` is your instance's version, e.g. 4.0).
+(where `x.y` is your instance's version, e.g. `4.0`).
 
-On the front-end you need to import the Demo flows provided in the `demo.json` file.
+On the **front-end** you need to import the Demo flows provided in the `demo.json` file.
 
 License
 =======
