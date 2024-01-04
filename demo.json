@@ -7,25 +7,12 @@
         "info": ""
     },
     {
-        "id": "15a04d1.04ea5b3",
-        "type": "simplicite-config",
-        "z": "43527ffc.f24cd",
-        "name": "default",
-        "username": "website",
-        "password": "simplicite",
-        "host": "demo.dev.simplicite.io",
-        "port": "443",
-        "scheme": "https",
-        "root": "",
-        "debug": "false"
-    },
-    {
         "id": "99d36acf.225b78",
         "type": "http response",
         "z": "43527ffc.f24cd",
         "name": "",
         "x": 590,
-        "y": 140,
+        "y": 640,
         "wires": []
     },
     {
@@ -36,7 +23,7 @@
         "url": "/appinfo",
         "method": "get",
         "x": 110,
-        "y": 140,
+        "y": 640,
         "wires": [
             [
                 "342f7051.5321f"
@@ -53,7 +40,7 @@
         "syntax": "mustache",
         "template": "<p>\nApplication name: <b>{{payload.name}}</b>\n<br/>Application version: <b>{{payload.version}}</b>\n<br/>Platform version: <b>{{payload.platformversion}}</b>\n<br/>Platform encoding: <b>{{payload.encoding}}</b>\n<br/>Server: <b>{{payload.server}}</b>\n</p>",
         "x": 440,
-        "y": 140,
+        "y": 640,
         "wires": [
             [
                 "99d36acf.225b78"
@@ -69,7 +56,7 @@
         "console": "false",
         "complete": "false",
         "x": 430,
-        "y": 180,
+        "y": 680,
         "wires": []
     },
     {
@@ -80,7 +67,7 @@
         "server": "15a04d1.04ea5b3",
         "action": "appinfo",
         "x": 280,
-        "y": 140,
+        "y": 640,
         "wires": [
             [
                 "f17ffc94.20dd3",
@@ -94,7 +81,7 @@
         "z": "43527ffc.f24cd",
         "name": "",
         "x": 590,
-        "y": 240,
+        "y": 740,
         "wires": []
     },
     {
@@ -106,7 +93,7 @@
         "method": "get",
         "swaggerDoc": "",
         "x": 110,
-        "y": 240,
+        "y": 740,
         "wires": [
             [
                 "9620a589.06f948"
@@ -123,7 +110,7 @@
         "syntax": "mustache",
         "template": "<p>\nObject cache: <b>{{payload.cacheobject}} / {{payload.cacheobjectmax}}</b>\n<br/>Grant cache: <b>{{payload.cachegrant}} / {{payload.cachegrantmax}}</b>\n<br/>Heap: <b>Used {{payload.heapsize}}Kb, Free {{payload.heapfreesize}}Kb, Max {{payload.heapsize}}Kb</b>\n<br/>Disk: <b>DBDoc {{payload.dirdbdoc}}, Cache {{payload.dircache}}Kb, Recycle bin {{payload.dirrecyclebin}}Kb, Free {{payload.diskfree}}Kb</b>\n</p>",
         "x": 440,
-        "y": 240,
+        "y": 740,
         "wires": [
             [
                 "3fd2c5ce.9e141a"
@@ -139,7 +126,7 @@
         "console": "false",
         "complete": "false",
         "x": 430,
-        "y": 280,
+        "y": 780,
         "wires": []
     },
     {
@@ -150,7 +137,7 @@
         "server": "15a04d1.04ea5b3",
         "action": "sysinfo",
         "x": 280,
-        "y": 240,
+        "y": 740,
         "wires": [
             [
                 "4da344fd.60be3c",
@@ -166,7 +153,7 @@
         "url": "/grant",
         "method": "get",
         "x": 100,
-        "y": 40,
+        "y": 140,
         "wires": [
             [
                 "bcad33e.bafc3d"
@@ -178,8 +165,10 @@
         "type": "http response",
         "z": "43527ffc.f24cd",
         "name": "",
-        "x": 670,
-        "y": 40,
+        "statusCode": "",
+        "headers": {},
+        "x": 690,
+        "y": 140,
         "wires": []
     },
     {
@@ -190,9 +179,9 @@
         "field": "payload",
         "fieldType": "msg",
         "syntax": "mustache",
-        "template": "Hello <b>{{payload.firstname}} {{payload.lastname}}</b> (<i>{{payload.login}}</i>)!\n{{#payload.picture}}\n<br/><img src=\"data:{{mime}};base64,{{content}}\"/>\n{{/payload.picture}}\n\n",
-        "x": 530,
-        "y": 40,
+        "template": "<div class=\"d-flex justify-content-center m-2\">\n    {{#payload.picture}}\n    <div class=\"p-1\">\n        <img src=\"data:{{mime}};base64,{{content}}\" style=\"width: 50px;\"/>\n    </div>\n    {{/payload.picture}}\n    <div class=\"p-1\">\n        Hello <b>{{payload.firstname}} {{payload.lastname}}</b>\n        <br/>(<i>{{payload.login}}</i>)!\n\t</div>\n</div>\n",
+        "x": 550,
+        "y": 140,
         "wires": [
             [
                 "835f05dd.1454f8"
@@ -207,8 +196,8 @@
         "active": false,
         "console": "false",
         "complete": "false",
-        "x": 530,
-        "y": 80,
+        "x": 550,
+        "y": 180,
         "wires": []
     },
     {
@@ -218,8 +207,8 @@
         "name": "grant",
         "server": "15a04d1.04ea5b3",
         "action": "grant",
-        "x": 390,
-        "y": 40,
+        "x": 410,
+        "y": 140,
         "wires": [
             [
                 "b95fed82.afd16",
@@ -231,12 +220,16 @@
         "id": "bcad33e.bafc3d",
         "type": "function",
         "z": "43527ffc.f24cd",
-        "name": "grant",
+        "name": "params",
         "func": "msg.payload = { \n\tparameters: {\n\t\tinlinePicture: true\n\t}\n};\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
-        "x": 250,
-        "y": 40,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 140,
         "wires": [
             [
                 "80836c59.6c008"
@@ -250,8 +243,10 @@
         "name": "",
         "url": "/products",
         "method": "get",
-        "x": 120,
-        "y": 420,
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 240,
         "wires": [
             [
                 "84045610.d85da8"
@@ -263,11 +258,15 @@
         "type": "function",
         "z": "43527ffc.f24cd",
         "name": "params",
-        "func": "msg.payload = {\n\taction: \"search\",\n\tparameters: {\n\t\tinlineThumbs: true,\n\t},\n\tfilters: {\n\t\t/*demoPrdAvailable: true*/\n\t}\n};\nreturn msg;",
+        "func": "msg.payload = {\n\taction: \"search\",\n\tparameters: {\n\t\tinlineThumbs: true,\n\t},\n\tfilters: {\n\t\tdemoPrdAvailable: true\n\t}\n};\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
-        "x": 300,
-        "y": 420,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 240,
         "wires": [
             [
                 "2944a056.16c67"
@@ -282,8 +281,8 @@
         "server": "15a04d1.04ea5b3",
         "objectname": "DemoProduct",
         "action": "",
-        "x": 460,
-        "y": 420,
+        "x": 440,
+        "y": 240,
         "wires": [
             [
                 "7bb3bbae.6a82c4",
@@ -299,9 +298,9 @@
         "field": "payload",
         "fieldType": "msg",
         "syntax": "mustache",
-        "template": "<div class=\"row\">\n\t<div class=\"col-md-12\">\n\t\t<h3>Products <button class=\"btn btn-xs btn-default pull-right\" onclick=\"products();\"><span class=\"glyphicon glyphicon-refresh\"></span> Refresh</button></h3>\n\t</div>\n{{#payload.list}}\n\t<div class=\"col-md-6\">\n\t\t<div class=\"panel panel-info\">\n\t\t\t<div class=\"panel-heading\"><h4><span class=\"glyphicon glyphicon-shopping-cart\"></span> {{demoPrdSupId__demoSupCode}} / {{demoPrdName}}</h4></div>\n\t\t\t<div class=\"panel-body\">\n\t\t\t\t{{#demoPrdPicture}}\n\t\t\t\t<img src=\"data:{{mime}};base64,{{thumbnail}}\" style=\"margin: 5px; float: left;\"/>\n\t\t\t\t{{/demoPrdPicture}}\n\t\t\t\t<p>{{{demoPrdDescription}}}</p>\n\t\t\t\t<div class=\"badge badge-lg pull-right\">$ {{demoPrdUnitPrice}}<!-- &euro;--></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n{{/payload.list}}\n</div>",
-        "x": 660,
-        "y": 420,
+        "template": "<div class=\"row\">\n\t<div class=\"col-md-12\">\n\t\t<h3><i class=\"fa-solid fa-boxes-stacked\"></i> Products\n\t\t<button class=\"btn btn-xs btn-light float-end\" onclick=\"products();\"><i class=\"fa-solid fa-rotate-right\"></i> Refresh</button></h3>\n\t</div>\n{{#payload.list}}\n\t<div class=\"col-md-6\">\n\t\t<div class=\"card\" style=\"margin-bottom: .5rem;\">\n\t\t\t<div class=\"card-header bg-primary-subtle\">\n\t\t\t    <h4><i class=\"fa-solid fa-box\"></i> {{demoPrdSupId__demoSupCode}} / {{demoPrdName}}</h4>\n\t\t\t   </div>\n\t\t\t<div class=\"card-body\">\n\t\t\t\t{{#demoPrdPicture}}\n\t\t\t\t<img src=\"data:{{mime}};base64,{{thumbnail}}\" style=\"margin: 5px; float: left;\"/>\n\t\t\t\t{{/demoPrdPicture}}\n\t\t\t\t<p>{{{demoPrdDescription}}}</p>\n\t\t\t\t<div class=\"badge bg-secondary float-end\" style=\"text-align: right;\">$ {{demoPrdUnitPrice}}<!-- &euro;--></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n{{/payload.list}}\n</div>",
+        "x": 600,
+        "y": 240,
         "wires": [
             [
                 "7a407c51.f45d14"
@@ -313,8 +312,8 @@
         "type": "http response",
         "z": "43527ffc.f24cd",
         "name": "",
-        "x": 810,
-        "y": 420,
+        "x": 750,
+        "y": 240,
         "wires": []
     },
     {
@@ -324,8 +323,10 @@
         "name": "",
         "url": "/news",
         "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
         "x": 100,
-        "y": 520,
+        "y": 340,
         "wires": [
             [
                 "520fe381.ffd7ec"
@@ -338,7 +339,7 @@
         "z": "43527ffc.f24cd",
         "name": "",
         "x": 690,
-        "y": 520,
+        "y": 340,
         "wires": []
     },
     {
@@ -349,9 +350,9 @@
         "field": "payload",
         "fieldType": "msg",
         "syntax": "mustache",
-        "template": "<div class=\"row\">\n\t<div class=\"col-md-12\">\n\t\t<h3>News <button class=\"btn btn-xs btn-default pull-right\" onclick=\"news();\"><span class=\"glyphicon glyphicon-refresh\"></span> Refresh</button></h3>\n\t</div>\n{{#payload}}\n\t<div class=\"col-md-12\">\n\t\t<div class=\"panel panel-warning\">\n\t\t\t<div class=\"panel-heading\"><span class=\"glyphicon glyphicon-bullhorn\"></span> {{title}}</div>\n\t\t\t<div class=\"panel-body\">\n\t\t\t\t{{#image}}\n\t\t\t\t<img src=\"data:{{mime}};base64,{{content}}\" style=\"margin: 5px; float: left;\"/>\n\t\t\t\t{{/image}}\n\t\t\t\t<p>{{content}}</p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n{{/payload}}\n</div>\n",
+        "template": "<div class=\"row\">\n\t<div class=\"col-md-12\">\n\t\t<h3><i class=\"fa-solid fa-newspaper\"></i> News\n\t\t<button class=\"btn btn-xs btn-light float-end\" onclick=\"news();\"><i class=\"fa-solid fa-rotate-right\"></i> Refresh</button></h3>\n\t</div>\n{{#payload}}\n\t<div class=\"col-md-12\">\n\t\t<div class=\"card m-1\">\n\t\t\t<div class=\"card-header bg-success-subtle\">\n\t\t\t    <h5><i class=\"fa-solid fa-circle-info\"></i> {{title}}</h5>\n\t\t   </div>\n\t\t\t<div class=\"card-body\">\n\t\t\t\t{{#image}}\n\t\t\t\t<img src=\"data:{{mime}};base64,{{content}}\" style=\"margin: 5px; float: left; max-width: 100%;\"/>\n\t\t\t\t{{/image}}\n\t\t\t\t<p>{{content}}</p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n{{/payload}}\n</div>\n",
         "x": 550,
-        "y": 520,
+        "y": 340,
         "wires": [
             [
                 "69de63c6.1ba51c"
@@ -365,9 +366,13 @@
         "name": "params",
         "func": "msg.payload = {\n\tparameters: {\n\t\tinlineImages: true\n\t}\n};\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 260,
-        "y": 520,
+        "y": 340,
         "wires": [
             [
                 "e296f697.de5ff8"
@@ -382,7 +387,7 @@
         "server": "15a04d1.04ea5b3",
         "action": "news",
         "x": 410,
-        "y": 520,
+        "y": 340,
         "wires": [
             [
                 "fb793ac7.fba438",
@@ -399,7 +404,7 @@
         "console": "false",
         "complete": "false",
         "x": 550,
-        "y": 560,
+        "y": 380,
         "wires": []
     },
     {
@@ -410,8 +415,8 @@
         "active": false,
         "console": "false",
         "complete": "false",
-        "x": 650,
-        "y": 460,
+        "x": 590,
+        "y": 280,
         "wires": []
     },
     {
@@ -422,11 +427,11 @@
         "url": "/demo",
         "method": "get",
         "swaggerDoc": "",
-        "x": 110,
-        "y": 340,
+        "x": 100,
+        "y": 40,
         "wires": [
             [
-                "fdb8c675.d169f8"
+                "f081f5e17c8604c6"
             ]
         ]
     },
@@ -438,9 +443,9 @@
         "field": "payload",
         "fieldType": "msg",
         "syntax": "mustache",
-        "template": "<html>\n<head>\n<title>Simplicit&eacute; NodeRED demo</title>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n<link rel=\"shortcut icon\" href=\"{{{payload.resourcesURL}}}/logos/favicon.ico\"/>\n<link href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\" rel=\"stylesheet\"/>\n</head>\n<body>\n<div class=\"container\">\n\t<div class=\"row\">\n\t\t<div class=\"col-md-12 well\" style=\"text-align: center; margin-top: 10px;\">\n\t\t\t<img src=\"{{{payload.resourcesURL}}}/logos/logo500.png\"/>\n\t\t</div>\n\t</div>\n\t<div class=\"row\">\n\t\t<div id=\"products\" class=\"col-md-9\"></div>\n\t\t<div id=\"news\" class=\"col-md-3\"></div>\n\t</div>\n\t<div class=\"row\">\n\t\t<div class=\"col-md-12\" style=\"text-align: center;\"><hr/>&copy; Simplicit&eacute; Software</div>\n\t</div>\n</div>\n<script src=\"https://code.jquery.com/jquery-2.2.4.min.js\"></script>\n<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>\n<script type=\"text/javascript\">\nfunction products() { $(\"#products\").text(\"Loading...\").load(\"/products\"); }\nfunction news() { $(\"#news\").text(\"Loading...\").load(\"/news\"); }\n$(document).ready(function() { products(); news(); });\n</script>\n</body>\n</html>\n",
-        "x": 430,
-        "y": 340,
+        "template": "<html>\n<head>\n<title>Simplicit&eacute; NodeRED demo</title>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n<link rel=\"shortcut icon\" href=\"{{{payload.resourcesURL}}}/logos/favicon.ico\"/>\n<link href=\"{{{payload.bootstrapStylesURL}}}\" rel=\"stylesheet\"/>\n<link href=\"{{{payload.fontawesomeURL}}}\" rel=\"stylesheet\"/>\n</head>\n<body>\n<div class=\"container\">\n\t<div class=\"row\">\n\t\t<div class=\"col-md-12 card bg-light\" style=\"margin-top: 1rem; margin-bottom: 1rem; padding: .5rem;\">\n\t\t\t<img src=\"{{{payload.resourcesURL}}}/logos/logo500.png\" style=\"margin: 0 auto; max-width: 100%;\"/>\n\t\t</div>\n\t</div>\n\t<div id=\"grant\"></div>\n\t<div class=\"row\">\n\t\t<div id=\"products\" class=\"col-md-9\"></div>\n\t\t<div id=\"news\" class=\"col-md-3\"></div>\n\t</div>\n\t<div class=\"row\">\n\t\t<div class=\"col-md-12\" style=\"text-align: center;\"><hr/>&copy; Simplicit&eacute; Software</div>\n\t</div>\n</div>\n<script src=\"{{{payload.jqueryURL}}}\"></script>\n<script src=\"{{{payload.bootstrapScriptURL}}}\"></script>\n<script type=\"text/javascript\">\nconst products = () => $(\"#products\").text(\"Loading...\").load(\"/products\");\nconst news = () => $(\"#news\").text(\"Loading...\").load(\"/news\");\n$(document).ready(() => {\n    $(\"#grant\").text(\"Loading...\").load(\"/grant\");\n    products();\n    news();\n});\n</script>\n</body>\n</html>\n",
+        "x": 550,
+        "y": 40,
         "wires": [
             [
                 "7aa72aa0.898154"
@@ -452,8 +457,8 @@
         "type": "http response",
         "z": "43527ffc.f24cd",
         "name": "",
-        "x": 570,
-        "y": 340,
+        "x": 690,
+        "y": 40,
         "wires": []
     },
     {
@@ -461,15 +466,157 @@
         "type": "function",
         "z": "43527ffc.f24cd",
         "name": "params",
-        "func": "msg.payload = {\n    resourcesURL: \"https://docs.simplicite.io\"\n};\nreturn msg;",
+        "func": "msg.payload = {\n    resourcesURL: \"https://docs.simplicite.io\",\n    jqueryURL: \"https://code.jquery.com/jquery-3.7.1.min.js\",\n    fontawesomeURL: \"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css\",\n    bootstrapStylesURL: \"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css\",\n    bootstrapScriptURL: \"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js\",\n};\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
-        "x": 280,
-        "y": 340,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 40,
         "wires": [
             [
                 "bdf81e02.d351"
             ]
         ]
+    },
+    {
+        "id": "95998ebd4ea21446",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/login",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 520,
+        "wires": [
+            [
+                "12b92cddd7421f96"
+            ]
+        ]
+    },
+    {
+        "id": "f081f5e17c8604c6",
+        "type": "simplicite-session",
+        "z": "43527ffc.f24cd",
+        "name": "login",
+        "server": "15a04d1.04ea5b3",
+        "action": "login",
+        "x": 250,
+        "y": 40,
+        "wires": [
+            [
+                "fdb8c675.d169f8",
+                "ccadcc95ddad28ce"
+            ]
+        ]
+    },
+    {
+        "id": "827d01cb13f9ea0e",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 390,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "50b4a58df44e3fb2",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/logout",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 840,
+        "wires": [
+            [
+                "61e771839b1c7e73"
+            ]
+        ]
+    },
+    {
+        "id": "61e771839b1c7e73",
+        "type": "simplicite-session",
+        "z": "43527ffc.f24cd",
+        "name": "logout",
+        "server": "15a04d1.04ea5b3",
+        "action": "logout",
+        "x": 270,
+        "y": 840,
+        "wires": [
+            [
+                "86758380f61a9b31"
+            ]
+        ]
+    },
+    {
+        "id": "86758380f61a9b31",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 410,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "ccadcc95ddad28ce",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 390,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "12b92cddd7421f96",
+        "type": "simplicite-session",
+        "z": "43527ffc.f24cd",
+        "name": "login",
+        "server": "15a04d1.04ea5b3",
+        "action": "login",
+        "x": 250,
+        "y": 520,
+        "wires": [
+            [
+                "827d01cb13f9ea0e",
+                "7d148325f89660ba"
+            ]
+        ]
+    },
+    {
+        "id": "7d148325f89660ba",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 390,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "15a04d1.04ea5b3",
+        "type": "simplicite-config",
+        "z": "43527ffc.f24cd",
+        "name": "default",
+        "username": "website",
+        "password": "simplicite",
+        "authtoken": "",
+        "host": "demo.dev.simplicite.io",
+        "port": "443",
+        "scheme": "https",
+        "root": "",
+        "endpoint": "api",
+        "debug": "false"
     }
 ]
