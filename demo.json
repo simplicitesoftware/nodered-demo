@@ -2,148 +2,24 @@
     {
         "id": "43527ffc.f24cd",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Demo",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "99d36acf.225b78",
-        "type": "http response",
+        "id": "15a04d1.04ea5b3",
+        "type": "simplicite-config",
         "z": "43527ffc.f24cd",
-        "name": "",
-        "x": 590,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "22a5e575.36e82a",
-        "type": "http in",
-        "z": "43527ffc.f24cd",
-        "name": "",
-        "url": "/appinfo",
-        "method": "get",
-        "x": 110,
-        "y": 640,
-        "wires": [
-            [
-                "342f7051.5321f"
-            ]
-        ]
-    },
-    {
-        "id": "f17ffc94.20dd3",
-        "type": "template",
-        "z": "43527ffc.f24cd",
-        "name": "appinfo",
-        "field": "payload",
-        "fieldType": "msg",
-        "syntax": "mustache",
-        "template": "<p>\nApplication name: <b>{{payload.name}}</b>\n<br/>Application version: <b>{{payload.version}}</b>\n<br/>Platform version: <b>{{payload.platformversion}}</b>\n<br/>Platform encoding: <b>{{payload.encoding}}</b>\n<br/>Server: <b>{{payload.server}}</b>\n</p>",
-        "x": 440,
-        "y": 640,
-        "wires": [
-            [
-                "99d36acf.225b78"
-            ]
-        ]
-    },
-    {
-        "id": "ed132a7d.a5a168",
-        "type": "debug",
-        "z": "43527ffc.f24cd",
-        "name": "",
-        "active": false,
-        "console": "false",
-        "complete": "false",
-        "x": 430,
-        "y": 680,
-        "wires": []
-    },
-    {
-        "id": "342f7051.5321f",
-        "type": "simplicite-session",
-        "z": "43527ffc.f24cd",
-        "name": "appinfo",
-        "server": "15a04d1.04ea5b3",
-        "action": "appinfo",
-        "x": 280,
-        "y": 640,
-        "wires": [
-            [
-                "f17ffc94.20dd3",
-                "ed132a7d.a5a168"
-            ]
-        ]
-    },
-    {
-        "id": "3fd2c5ce.9e141a",
-        "type": "http response",
-        "z": "43527ffc.f24cd",
-        "name": "",
-        "x": 590,
-        "y": 740,
-        "wires": []
-    },
-    {
-        "id": "c26a810.aa0a18",
-        "type": "http in",
-        "z": "43527ffc.f24cd",
-        "name": "",
-        "url": "/sysinfo",
-        "method": "get",
-        "swaggerDoc": "",
-        "x": 110,
-        "y": 740,
-        "wires": [
-            [
-                "9620a589.06f948"
-            ]
-        ]
-    },
-    {
-        "id": "4da344fd.60be3c",
-        "type": "template",
-        "z": "43527ffc.f24cd",
-        "name": "sysinfo",
-        "field": "payload",
-        "fieldType": "msg",
-        "syntax": "mustache",
-        "template": "<p>\nObject cache: <b>{{payload.cacheobject}} / {{payload.cacheobjectmax}}</b>\n<br/>Grant cache: <b>{{payload.cachegrant}} / {{payload.cachegrantmax}}</b>\n<br/>Heap: <b>Used {{payload.heapsize}}Kb, Free {{payload.heapfreesize}}Kb, Max {{payload.heapsize}}Kb</b>\n<br/>Disk: <b>DBDoc {{payload.dirdbdoc}}, Cache {{payload.dircache}}Kb, Recycle bin {{payload.dirrecyclebin}}Kb, Free {{payload.diskfree}}Kb</b>\n</p>",
-        "x": 440,
-        "y": 740,
-        "wires": [
-            [
-                "3fd2c5ce.9e141a"
-            ]
-        ]
-    },
-    {
-        "id": "1fcd44bd.7143eb",
-        "type": "debug",
-        "z": "43527ffc.f24cd",
-        "name": "",
-        "active": false,
-        "console": "false",
-        "complete": "false",
-        "x": 430,
-        "y": 780,
-        "wires": []
-    },
-    {
-        "id": "9620a589.06f948",
-        "type": "simplicite-session",
-        "z": "43527ffc.f24cd",
-        "name": "sysinfo",
-        "server": "15a04d1.04ea5b3",
-        "action": "sysinfo",
-        "x": 280,
-        "y": 740,
-        "wires": [
-            [
-                "4da344fd.60be3c",
-                "1fcd44bd.7143eb"
-            ]
-        ]
+        "name": "default",
+        "username": "admin",
+        "password": "simplicite",
+        "authtoken": "",
+        "host": "dev6.dev2.simplicite.io",
+        "port": "443",
+        "scheme": "https",
+        "root": "",
+        "endpoint": "api",
+        "debug": "true"
     },
     {
         "id": "fb344ce5.b89db",
@@ -155,7 +31,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 100,
-        "y": 140,
+        "y": 160,
         "wires": [
             [
                 "bcad33e.bafc3d"
@@ -170,7 +46,7 @@
         "statusCode": "",
         "headers": {},
         "x": 690,
-        "y": 140,
+        "y": 160,
         "wires": []
     },
     {
@@ -183,7 +59,7 @@
         "syntax": "mustache",
         "template": "<div class=\"d-flex justify-content-center m-2\">\n    {{#payload.picture}}\n    <div class=\"p-1\">\n        <img src=\"data:{{mime}};base64,{{content}}\" style=\"width: 50px;\"/>\n    </div>\n    {{/payload.picture}}\n    <div class=\"p-1\">\n        Hello <b>{{payload.firstname}} {{payload.lastname}}</b>\n        <br/>(<i>{{payload.login}}</i>)!\n\t</div>\n</div>\n",
         "x": 550,
-        "y": 140,
+        "y": 160,
         "wires": [
             [
                 "835f05dd.1454f8"
@@ -199,7 +75,7 @@
         "console": "false",
         "complete": "false",
         "x": 550,
-        "y": 180,
+        "y": 200,
         "wires": []
     },
     {
@@ -210,7 +86,7 @@
         "server": "15a04d1.04ea5b3",
         "action": "user",
         "x": 410,
-        "y": 140,
+        "y": 160,
         "wires": [
             [
                 "b95fed82.afd16",
@@ -231,7 +107,7 @@
         "finalize": "",
         "libs": [],
         "x": 260,
-        "y": 140,
+        "y": 160,
         "wires": [
             [
                 "80836c59.6c008"
@@ -248,7 +124,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 110,
-        "y": 240,
+        "y": 260,
         "wires": [
             [
                 "84045610.d85da8"
@@ -260,7 +136,7 @@
         "type": "function",
         "z": "43527ffc.f24cd",
         "name": "params",
-        "func": "msg.payload = {\n\taction: \"search\",\n\tparameters: {\n\t\tinlineThumbs: true,\n\t},\n\tfilters: {\n\t\tdemoPrdAvailable: true\n\t}\n};\nreturn msg;",
+        "func": "msg.payload = {\n\tparameters: {\n\t\tinlineThumbs: true,\n\t},\n\tfilters: {\n\t\tdemoPrdAvailable: true\n\t}\n};\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -268,7 +144,7 @@
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 240,
+        "y": 260,
         "wires": [
             [
                 "2944a056.16c67"
@@ -284,7 +160,7 @@
         "objectname": "DemoProduct",
         "action": "search",
         "x": 440,
-        "y": 240,
+        "y": 260,
         "wires": [
             [
                 "7bb3bbae.6a82c4",
@@ -300,9 +176,9 @@
         "field": "payload",
         "fieldType": "msg",
         "syntax": "mustache",
-        "template": "<div class=\"row\">\n\t<div class=\"col-md-12\">\n\t\t<h3><i class=\"fa-solid fa-boxes-stacked\"></i> {{payload.count}} available product(s)\n\t\t<button class=\"btn btn-xs btn-light float-end\" onclick=\"products();\"><i class=\"fa-solid fa-rotate-right\"></i> Refresh</button></h3>\n\t</div>\n{{#payload.list}}\n\t<div class=\"col-md-6\">\n\t\t<div class=\"card shadow m-2\">\n\t\t\t<div class=\"card-header bg-primary-subtle\">\n\t\t\t    <h4><i class=\"fa-solid fa-box\"></i> {{demoPrdSupId__demoSupCode}} / {{demoPrdName}}</h4>\n\t\t\t   </div>\n\t\t\t<div class=\"card-body\">\n\t\t\t\t{{#demoPrdPicture}}\n\t\t\t\t<img src=\"data:{{mime}};base64,{{thumbnail}}\" style=\"margin: 5px; float: left;\"/>\n\t\t\t\t{{/demoPrdPicture}}\n\t\t\t\t<p>{{{demoPrdDescription}}}</p>\n\t\t\t\t<div class=\"badge bg-secondary float-end\">$ {{demoPrdUnitPrice}}<!-- &euro;--></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n{{/payload.list}}\n</div>",
+        "template": "<div class=\"row\">\n\t<div class=\"col-md-12\">\n\t\t<h3><i class=\"fa-solid fa-boxes-stacked\"></i> {{payload.count}} available product(s)\n\t\t<button class=\"btn btn-xs btn-light float-end\" onclick=\"products();\"><i class=\"fa-solid fa-rotate-right\"></i> Refresh</button></h3>\n\t</div>\n{{#payload.list}}\n\t<div class=\"col-md-6\">\n\t\t<div class=\"card shadow m-2\">\n\t\t\t<div class=\"card-header bg-primary-subtle\">\n\t\t\t    <h4><i class=\"fa-solid fa-box\"></i> {{demoPrdSupId__demoSupCode}} / {{demoPrdName}}</h4>\n\t\t\t   </div>\n\t\t\t<div class=\"card-body\">\n\t\t\t\t{{#demoPrdPicture}}\n\t\t\t\t<img src=\"data:{{mime}};base64,{{thumbnail}}\" style=\"margin: 5px; float: left;\"/>\n\t\t\t\t{{/demoPrdPicture}}\n\t\t\t\t<p>{{{demoPrdDescription}}}</p>\n\t\t\t\t<div class=\"badge bg-secondary float-end\">$ {{demoPrdUnitPrice}}<!-- &euro;--></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n{{/payload.list}}\n</div>\n<div class=\"row\">\n    <div class=\"col-md-12 p-2 text-center\">\n\t    <a class=\"btn btn-light\" href=\"/catalog\" target=\"_blank\"><i class=\"fa-solid fa-folder-open\"></i> Full catalog</a>\n    </div>\n</div>",
         "x": 600,
-        "y": 240,
+        "y": 260,
         "wires": [
             [
                 "7a407c51.f45d14"
@@ -315,7 +191,7 @@
         "z": "43527ffc.f24cd",
         "name": "",
         "x": 750,
-        "y": 240,
+        "y": 260,
         "wires": []
     },
     {
@@ -328,7 +204,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 100,
-        "y": 340,
+        "y": 460,
         "wires": [
             [
                 "520fe381.ffd7ec"
@@ -341,7 +217,7 @@
         "z": "43527ffc.f24cd",
         "name": "",
         "x": 690,
-        "y": 340,
+        "y": 460,
         "wires": []
     },
     {
@@ -352,9 +228,9 @@
         "field": "payload",
         "fieldType": "msg",
         "syntax": "mustache",
-        "template": "<div class=\"row\">\n\t<div class=\"col-md-12\">\n\t\t<h3><i class=\"fa-solid fa-newspaper\"></i> News\n\t\t<button class=\"btn btn-xs btn-light float-end\" onclick=\"news();\"><i class=\"fa-solid fa-rotate-right\"></i> Refresh</button></h3>\n\t</div>\n{{#payload}}\n\t<div class=\"col-md-12\">\n\t\t<div class=\"card shadow m-2\">\n\t\t\t<div class=\"card-header bg-success-subtle\">\n\t\t\t    <h5><i class=\"fa-solid fa-circle-info\"></i> {{title}}</h5>\n\t\t   </div>\n\t\t\t<div class=\"card-body\">\n\t\t\t\t{{#image}}\n\t\t\t\t<img src=\"data:{{mime}};base64,{{content}}\" style=\"margin: 5px; float: left; max-width: 100%;\"/>\n\t\t\t\t{{/image}}\n\t\t\t\t<p>{{content}}</p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n{{/payload}}\n</div>\n",
+        "template": "<div class=\"row\">\n\t<div class=\"col-md-12\">\n\t\t<h3><i class=\"fa-solid fa-newspaper\"></i> News\n\t\t<button class=\"btn btn-xs btn-light float-end\" onclick=\"news();\"><i class=\"fa-solid fa-rotate-right\"></i> Refresh</button></h3>\n\t</div>\n{{#payload}}\n\t<div class=\"col-md-12\">\n\t\t<div class=\"card shadow m-2\">\n\t\t\t<div class=\"card-header bg-success-subtle\">\n\t\t\t    <h5><i class=\"fa-solid fa-circle-info\"></i> {{title}}</h5>\n\t\t   </div>\n\t\t\t<div class=\"card-body\">\n\t\t\t\t{{#image}}\n\t\t\t\t<img src=\"data:{{mime}};base64,{{content}}\" style=\"max-width: 100%;\"/>\n\t\t\t\t{{/image}}\n\t\t\t\t<p>{{content}}</p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n{{/payload}}\n</div>\n",
         "x": 550,
-        "y": 340,
+        "y": 460,
         "wires": [
             [
                 "69de63c6.1ba51c"
@@ -374,7 +250,7 @@
         "finalize": "",
         "libs": [],
         "x": 260,
-        "y": 340,
+        "y": 460,
         "wires": [
             [
                 "e296f697.de5ff8"
@@ -389,7 +265,7 @@
         "server": "15a04d1.04ea5b3",
         "action": "news",
         "x": 410,
-        "y": 340,
+        "y": 460,
         "wires": [
             [
                 "fb793ac7.fba438",
@@ -406,7 +282,7 @@
         "console": "false",
         "complete": "false",
         "x": 550,
-        "y": 380,
+        "y": 500,
         "wires": []
     },
     {
@@ -414,11 +290,11 @@
         "type": "debug",
         "z": "43527ffc.f24cd",
         "name": "",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "false",
         "x": 590,
-        "y": 280,
+        "y": 300,
         "wires": []
     },
     {
@@ -430,7 +306,7 @@
         "method": "get",
         "swaggerDoc": "",
         "x": 100,
-        "y": 40,
+        "y": 60,
         "wires": [
             [
                 "f081f5e17c8604c6"
@@ -445,8 +321,8 @@
         "field": "payload",
         "fieldType": "msg",
         "syntax": "mustache",
-        "template": "<html>\n<head>\n<title>Simplicit&eacute; NodeRED demo</title>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n<link rel=\"shortcut icon\" href=\"{{{payload.resourcesURL}}}/logos/favicon.ico\"/>\n<link href=\"{{{payload.bootstrapStylesURL}}}\" rel=\"stylesheet\"/>\n<link href=\"{{{payload.fontawesomeURL}}}\" rel=\"stylesheet\"/>\n</head>\n<body>\n<div class=\"container\">\n\t<div class=\"row\">\n\t\t<div class=\"col-md-12 card bg-light\" style=\"margin-top: 1rem; margin-bottom: 1rem; padding: .5rem;\">\n\t\t\t<img src=\"{{{payload.resourcesURL}}}/logos/logo500.png\" style=\"margin: 0 auto; max-width: 100%;\"/>\n\t\t</div>\n\t</div>\n\t<div id=\"user\"></div>\n\t<div class=\"row\">\n\t\t<div id=\"products\" class=\"col-md-9\"></div>\n\t\t<div id=\"news\" class=\"col-md-3\"></div>\n\t</div>\n\t<div class=\"row\">\n\t\t<div class=\"col-md-12\" style=\"text-align: center;\"><hr/>&copy; Simplicit&eacute; Software</div>\n\t</div>\n</div>\n<script src=\"{{{payload.jqueryURL}}}\"></script>\n<script src=\"{{{payload.bootstrapScriptURL}}}\"></script>\n<script type=\"text/javascript\">\nconst products = () => $(\"#products\").text(\"Loading...\").load(\"/products\");\nconst news = () => $(\"#news\").text(\"Loading...\").load(\"/news\");\n$(document).ready(() => {\n    $(\"#user\").text(\"Loading...\").load(\"/user\");\n    products();\n    news();\n});\n</script>\n</body>\n</html>\n",
-        "x": 550,
+        "template": "<html>\n<head>\n    <title>Simplicit&eacute; NodeRED demo</title>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n    <link rel=\"shortcut icon\" href=\"{{{payload.resourcesURL}}}/logos/favicon.ico\"/>\n    <link href=\"{{{payload.bootstrapStylesURL}}}\" rel=\"stylesheet\"/>\n    <link href=\"{{{payload.fontawesomeURL}}}\" rel=\"stylesheet\"/>\n</head>\n<body class=\"container\">\n\t<div class=\"row\">\n\t\t<div class=\"col-md-12 card bg-light m-2 p-1\">\n\t\t\t<img src=\"{{{payload.resourcesURL}}}/logos/logo500.png\" style=\"margin: 0 auto; max-width: 100%;\"/>\n\t\t</div>\n\t</div>\n\t<div id=\"user\"></div>\n\t<div class=\"row\">\n\t\t<div id=\"products\" class=\"col-md-9\"></div>\n\t\t<div id=\"news\" class=\"col-md-3\"></div>\n\t</div>\n\t<div class=\"row\">\n\t\t<div class=\"col-md-12 text-center\">\n\t\t    <hr/>&copy; Simplicit&eacute; Software</div>\n\t</div>\n    <script src=\"{{{payload.jqueryURL}}}\"></script>\n    <script src=\"{{{payload.bootstrapScriptURL}}}\"></script>\n    <script type=\"text/javascript\">\n    const products = () => $(\"#products\").text(\"Loading...\").load(\"/products\");\n    const news = () => $(\"#news\").text(\"Loading...\").load(\"/news\");\n    $(document).ready(() => {\n        $(\"#user\").text(\"Loading...\").load(\"/user\");\n        products();\n        news();\n    });\n    </script>\n</body>\n</html>\n",
+        "x": 710,
         "y": 40,
         "wires": [
             [
@@ -459,8 +335,8 @@
         "type": "http response",
         "z": "43527ffc.f24cd",
         "name": "",
-        "x": 690,
-        "y": 40,
+        "x": 870,
+        "y": 60,
         "wires": []
     },
     {
@@ -468,18 +344,371 @@
         "type": "function",
         "z": "43527ffc.f24cd",
         "name": "params",
-        "func": "msg.payload = {\n    resourcesURL: \"https://docs.simplicite.io\",\n    jqueryURL: \"https://code.jquery.com/jquery-3.7.1.min.js\",\n    fontawesomeURL: \"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css\",\n    bootstrapStylesURL: \"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css\",\n    bootstrapScriptURL: \"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js\",\n};\nreturn msg;",
+        "func": "msg.payload = {\n    resourcesURL: \"https://docs.simplicite.io\",\n    jqueryURL: \"https://code.jquery.com/jquery-3.7.1.min.js\",\n    fontawesomeURL: \"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css\",\n    bootstrapStylesURL: \"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css\",\n    bootstrapScriptURL: \"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js\"\n};\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
+        "x": 560,
         "y": 40,
         "wires": [
             [
                 "bdf81e02.d351"
+            ]
+        ]
+    },
+    {
+        "id": "f081f5e17c8604c6",
+        "type": "simplicite-session",
+        "z": "43527ffc.f24cd",
+        "name": "login",
+        "server": "15a04d1.04ea5b3",
+        "action": "login",
+        "x": 250,
+        "y": 60,
+        "wires": [
+            [
+                "ccadcc95ddad28ce",
+                "104d332f99b3a27b"
+            ]
+        ]
+    },
+    {
+        "id": "ccadcc95ddad28ce",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 390,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "8fea360de1663710",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/catalog",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 360,
+        "wires": [
+            [
+                "21c01e621c1e5699"
+            ]
+        ]
+    },
+    {
+        "id": "beccd5f6e8675fe7",
+        "type": "simplicite-object",
+        "z": "43527ffc.f24cd",
+        "name": "catalog",
+        "server": "15a04d1.04ea5b3",
+        "objectname": "DemoSupplier",
+        "action": "print",
+        "actionparam": "DemoSupplier-CATALOG",
+        "x": 440,
+        "y": 360,
+        "wires": [
+            [
+                "56a0ed7c683c66db",
+                "1bec0d665cb69477"
+            ]
+        ]
+    },
+    {
+        "id": "58bfae5ca94e274e",
+        "type": "template",
+        "z": "43527ffc.f24cd",
+        "name": "catalog",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "mustache",
+        "template": "{{{payload}}}\n",
+        "x": 760,
+        "y": 360,
+        "wires": [
+            [
+                "43afa197778d76d8"
+            ]
+        ]
+    },
+    {
+        "id": "43afa197778d76d8",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 910,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "56a0ed7c683c66db",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 590,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "21c01e621c1e5699",
+        "type": "function",
+        "z": "43527ffc.f24cd",
+        "name": "params",
+        "func": "msg.payload = {\n\tparameters: {\n\t\tall: true\n\t}\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 360,
+        "wires": [
+            [
+                "beccd5f6e8675fe7"
+            ]
+        ]
+    },
+    {
+        "id": "1bec0d665cb69477",
+        "type": "function",
+        "z": "43527ffc.f24cd",
+        "name": "decode",
+        "func": "msg.payload = msg.payload.result.getContentAsText();\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 360,
+        "wires": [
+            [
+                "58bfae5ca94e274e"
+            ]
+        ]
+    },
+    {
+        "id": "42c7832d502c0049",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/pivot",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 1000,
+        "wires": [
+            [
+                "1bc2faff2e675920"
+            ]
+        ]
+    },
+    {
+        "id": "b351b42b533eb348",
+        "type": "simplicite-object",
+        "z": "43527ffc.f24cd",
+        "name": "pivot",
+        "server": "15a04d1.04ea5b3",
+        "objectname": "DemoProduct",
+        "action": "crosstab",
+        "actionparam": "DemoProduct-T1",
+        "x": 410,
+        "y": 1000,
+        "wires": [
+            [
+                "eb2d771692df2273",
+                "d09198fae117b180"
+            ]
+        ]
+    },
+    {
+        "id": "9b5e90d56da720b7",
+        "type": "template",
+        "z": "43527ffc.f24cd",
+        "name": "pivot",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "mustache",
+        "template": "<pre>{{payload}}</pre>",
+        "x": 710,
+        "y": 1000,
+        "wires": [
+            [
+                "c3dc960cfc12aee3"
+            ]
+        ]
+    },
+    {
+        "id": "c3dc960cfc12aee3",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 850,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "eb2d771692df2273",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 550,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "99d36acf.225b78",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 590,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "22a5e575.36e82a",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/appinfo",
+        "method": "get",
+        "x": 110,
+        "y": 700,
+        "wires": [
+            [
+                "342f7051.5321f"
+            ]
+        ]
+    },
+    {
+        "id": "f17ffc94.20dd3",
+        "type": "template",
+        "z": "43527ffc.f24cd",
+        "name": "appinfo",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "mustache",
+        "template": "<p>\nApplication name: <b>{{payload.name}}</b>\n<br/>Application version: <b>{{payload.version}}</b>\n<br/>Platform version: <b>{{payload.platformversion}}</b>\n<br/>Platform encoding: <b>{{payload.encoding}}</b>\n<br/>Server: <b>{{payload.server}}</b>\n</p>",
+        "x": 440,
+        "y": 700,
+        "wires": [
+            [
+                "99d36acf.225b78"
+            ]
+        ]
+    },
+    {
+        "id": "ed132a7d.a5a168",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 430,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "342f7051.5321f",
+        "type": "simplicite-session",
+        "z": "43527ffc.f24cd",
+        "name": "appinfo",
+        "server": "15a04d1.04ea5b3",
+        "action": "appinfo",
+        "x": 280,
+        "y": 700,
+        "wires": [
+            [
+                "f17ffc94.20dd3",
+                "ed132a7d.a5a168"
+            ]
+        ]
+    },
+    {
+        "id": "3fd2c5ce.9e141a",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 590,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "c26a810.aa0a18",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/sysinfo",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 800,
+        "wires": [
+            [
+                "9620a589.06f948"
+            ]
+        ]
+    },
+    {
+        "id": "4da344fd.60be3c",
+        "type": "template",
+        "z": "43527ffc.f24cd",
+        "name": "sysinfo",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "mustache",
+        "template": "<p>\nObject cache: <b>{{payload.cacheobject}} / {{payload.cacheobjectmax}}</b>\n<br/>Grant cache: <b>{{payload.cachegrant}} / {{payload.cachegrantmax}}</b>\n<br/>Heap: <b>Used {{payload.heapsize}}Kb, Free {{payload.heapfreesize}}Kb, Max {{payload.heapsize}}Kb</b>\n<br/>Disk: <b>DBDoc {{payload.dirdbdoc}}, Cache {{payload.dircache}}Kb, Recycle bin {{payload.dirrecyclebin}}Kb, Free {{payload.diskfree}}Kb</b>\n</p>",
+        "x": 440,
+        "y": 800,
+        "wires": [
+            [
+                "3fd2c5ce.9e141a"
+            ]
+        ]
+    },
+    {
+        "id": "1fcd44bd.7143eb",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 430,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "9620a589.06f948",
+        "type": "simplicite-session",
+        "z": "43527ffc.f24cd",
+        "name": "sysinfo",
+        "server": "15a04d1.04ea5b3",
+        "action": "sysinfo",
+        "x": 280,
+        "y": 800,
+        "wires": [
+            [
+                "4da344fd.60be3c",
+                "1fcd44bd.7143eb"
             ]
         ]
     },
@@ -493,26 +722,10 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 100,
-        "y": 520,
+        "y": 600,
         "wires": [
             [
                 "12b92cddd7421f96"
-            ]
-        ]
-    },
-    {
-        "id": "f081f5e17c8604c6",
-        "type": "simplicite-session",
-        "z": "43527ffc.f24cd",
-        "name": "login",
-        "server": "15a04d1.04ea5b3",
-        "action": "login",
-        "x": 250,
-        "y": 40,
-        "wires": [
-            [
-                "fdb8c675.d169f8",
-                "ccadcc95ddad28ce"
             ]
         ]
     },
@@ -522,7 +735,7 @@
         "z": "43527ffc.f24cd",
         "name": "",
         "x": 390,
-        "y": 520,
+        "y": 600,
         "wires": []
     },
     {
@@ -535,7 +748,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 110,
-        "y": 840,
+        "y": 1100,
         "wires": [
             [
                 "61e771839b1c7e73"
@@ -550,10 +763,11 @@
         "server": "15a04d1.04ea5b3",
         "action": "logout",
         "x": 270,
-        "y": 840,
+        "y": 1100,
         "wires": [
             [
-                "86758380f61a9b31"
+                "86758380f61a9b31",
+                "9f467b3e71983ca2"
             ]
         ]
     },
@@ -563,19 +777,7 @@
         "z": "43527ffc.f24cd",
         "name": "",
         "x": 410,
-        "y": 840,
-        "wires": []
-    },
-    {
-        "id": "ccadcc95ddad28ce",
-        "type": "debug",
-        "z": "43527ffc.f24cd",
-        "name": "",
-        "active": false,
-        "console": "false",
-        "complete": "false",
-        "x": 390,
-        "y": 80,
+        "y": 1100,
         "wires": []
     },
     {
@@ -586,7 +788,7 @@
         "server": "15a04d1.04ea5b3",
         "action": "login",
         "x": 250,
-        "y": 520,
+        "y": 600,
         "wires": [
             [
                 "827d01cb13f9ea0e",
@@ -603,22 +805,203 @@
         "console": "false",
         "complete": "false",
         "x": 390,
-        "y": 560,
+        "y": 640,
         "wires": []
     },
     {
-        "id": "15a04d1.04ea5b3",
-        "type": "simplicite-config",
+        "id": "9f467b3e71983ca2",
+        "type": "debug",
         "z": "43527ffc.f24cd",
-        "name": "default",
-        "username": "website",
-        "password": "simplicite",
-        "authtoken": "",
-        "host": "demo.dev.simplicite.io",
-        "port": "443",
-        "scheme": "https",
-        "root": "",
-        "endpoint": "api",
-        "debug": "false"
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 410,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "996a752bfa53ca08",
+        "type": "http in",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "url": "/incstock",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 900,
+        "wires": [
+            [
+                "fb0fe365a655f8c6"
+            ]
+        ]
+    },
+    {
+        "id": "b0f1cdf801d18928",
+        "type": "simplicite-object",
+        "z": "43527ffc.f24cd",
+        "name": "incstock",
+        "server": "15a04d1.04ea5b3",
+        "objectname": "DemoProduct",
+        "action": "action",
+        "actionparam": "DEMO_INCSTOCK",
+        "x": 440,
+        "y": 900,
+        "wires": [
+            [
+                "a67ad3c08bb8ade9",
+                "b889b73819cf9193"
+            ]
+        ]
+    },
+    {
+        "id": "a67ad3c08bb8ade9",
+        "type": "template",
+        "z": "43527ffc.f24cd",
+        "name": "stock",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "mustache",
+        "template": "<div class=\"row\">\n{{#payload.error}}\n\t<div class=\"col-md-12 alert alert-danger\">\n\t\t<strong>ERROR</strong>: {{payload.error.message}}\n\t</div>\n{{/payload.error}}\n{{^payload.error}}\n\t<div class=\"col-md-12 alert alert-success\">\n\t\t{{payload.result}}\n\t</div>\n{{/payload.error}}\n</div>",
+        "x": 590,
+        "y": 900,
+        "wires": [
+            [
+                "bc77a32ef971e1e3"
+            ]
+        ]
+    },
+    {
+        "id": "bc77a32ef971e1e3",
+        "type": "http response",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "x": 730,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "b889b73819cf9193",
+        "type": "debug",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "fb0fe365a655f8c6",
+        "type": "function",
+        "z": "43527ffc.f24cd",
+        "name": "params",
+        "func": "msg.payload = {\n\trow_id: 1\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 900,
+        "wires": [
+            [
+                "b0f1cdf801d18928"
+            ]
+        ]
+    },
+    {
+        "id": "1bc2faff2e675920",
+        "type": "function",
+        "z": "43527ffc.f24cd",
+        "name": "params",
+        "func": "msg.payload = {\n\tparameters: {\n\t\tcubes: false\n\t}\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 1000,
+        "wires": [
+            [
+                "b351b42b533eb348"
+            ]
+        ]
+    },
+    {
+        "id": "d09198fae117b180",
+        "type": "function",
+        "z": "43527ffc.f24cd",
+        "name": "transform",
+        "func": "msg.payload = JSON.stringify(msg.payload, null, 4);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 1000,
+        "wires": [
+            [
+                "9b5e90d56da720b7"
+            ]
+        ]
+    },
+    {
+        "id": "104d332f99b3a27b",
+        "type": "switch",
+        "z": "43527ffc.f24cd",
+        "name": "",
+        "property": "payload.error",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            },
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 400,
+        "y": 60,
+        "wires": [
+            [
+                "fdb8c675.d169f8"
+            ],
+            [
+                "773689fcd394f17d"
+            ]
+        ]
+    },
+    {
+        "id": "773689fcd394f17d",
+        "type": "template",
+        "z": "43527ffc.f24cd",
+        "name": "error",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "mustache",
+        "template": "<html>\n<head>\n    <title>Error</title>\n</head>\n<body>\n    <strong>ERROR</strong>: {{payload.error.message}}\n</body>\n</html>\n",
+        "x": 630,
+        "y": 100,
+        "wires": [
+            [
+                "7aa72aa0.898154"
+            ]
+        ]
     }
 ]
