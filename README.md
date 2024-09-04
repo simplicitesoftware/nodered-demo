@@ -5,8 +5,8 @@ NodeRED web frontend demo
 =========================
 
 This project is a web front-end demo written in [NodeRED](http://nodered.org/)
-using the [Simplicit&eacute;&reg; Node.js API](https://github.com/simplicitesoftware/nodejs-api)
-and [Simplicit&eacute;&reg; NodeRED nodes](https://github.com/simplicitesoftware/nodered-nodes)
+the [Simplicit&eacute;&reg; node.js&reg; &amp; brower JavaScript API](https://www.npmjs.com/package/simplicite)
+and [Simplicit&eacute;&reg; NodeRED nodes](https://www.npmjs.com/package/node-red-contrib-simplicite)
 to access to a Simplicit&eacute;&reg; back-end instance.
 
 Prerequisites
@@ -26,6 +26,8 @@ On the **front-end** you need to import the Demo flows provided in the `demo.jso
 
 License
 =======
+
+Copyright 2014-2024 Simplicit&eacute; Software
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
