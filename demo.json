@@ -412,7 +412,7 @@
         "server": "15a04d1.04ea5b3",
         "objectname": "DemoSupplier",
         "action": "print",
-        "actionparam": "DemoSupplier-CATALOG",
+        "actionparam": "DemoSupplier-Catalog",
         "x": 440,
         "y": 360,
         "wires": [
